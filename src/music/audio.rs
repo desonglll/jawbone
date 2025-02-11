@@ -111,7 +111,7 @@ fn visit_dirs(dir: &Path, audio_files: &mut Vec<Audio>) -> io::Result<()> {
                 // 检查文件扩展名是否为音频文件
                 if let Some(extension) = path.extension() {
                     if let Some(ext) = extension.to_str() {
-                        if matches!(ext, "mp3" | "wav" | "ogg") {
+                        if matches!(ext, "mp3" | "wav" | "ogg" | "flac") {
                             audio_files.push(Audio::from_dir_entry(entry));
                         }
                     }
@@ -134,7 +134,8 @@ mod tests {
 
     #[test]
     fn test_audio_files() {
-        let audio_list = list("/Users/mikeshinoda/Music/网易云音乐").as_mut();
+        let mut binding = list("/Users/mikeshinoda/Music/网易云音乐");
+        let audio_list = binding.as_mut();
         let encoded_audio_list = audio_list.encode();
         println!("{:?}", encoded_audio_list);
     }

@@ -4,7 +4,6 @@ use actix_web::{web, App, HttpServer};
 use jawbone::music::stream_music;
 use jawbone::routes::{audio_list, index};
 use std::net::{Ipv4Addr, SocketAddrV4};
-use tracing_actix_web::TracingLogger;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
